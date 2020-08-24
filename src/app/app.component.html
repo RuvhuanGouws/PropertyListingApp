@@ -1,0 +1,96 @@
+﻿<!-- nav -->
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav> -->
+
+<nav class='navbar navbar-expand navbar-dark bg-dark'>
+    <a class='navbar-brand'>Property 24++</a>
+    <ul class='navbar-nav ml-auto'>
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            >Home</a>
+        </li>
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            >Homes for Sale</a>
+        </li>
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            >Sell a House</a> <!-- Needs a guard -->
+        </li>
+        <li *ngIf='!currentUser' class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" style = "color: azure;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </a>
+            <div class="dropdown-menu bg-dark mr-auto" aria-labelledby="navbarDropdown">
+                <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/login']"
+                    >Login</a>
+                <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                    >Register</a>
+            </div>
+        </li>
+        
+        <li *ngIf='currentUser' class='nav-item'><a class='nav-link' style = "color: crimson;" (click) = 'logout()' routerLinkActive='active' [routerLink]="['/']"
+            >Sign Out</a>
+        </li>
+    </ul>
+</nav>
+<nav class='navbar navbar-expand navbar-dark bg-dark' *ngIf='currentUser'>
+    <div class = "container">
+        <ul class='navbar-nav mr-auto ml-auto'>
+            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                >My Adverts</a>
+            </li>
+            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                >My Profile</a>
+            </li>
+            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                >Buy a House</a>
+            </li>
+            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+                >Sell a House</a> 
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" style = "color: azure;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    My Account
+                </a>
+                <div class="dropdown-menu bg-dark mr-auto" aria-labelledby="navbarDropdown">
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/login']"
+                        >Manage My Account</a>
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                        >My Seller Profile</a>
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                        >Favourite Houses</a>
+                </div>
+            </li>
+            <li *ngIf='currentUser' class="nav-item dropdown "> <!-- Change to check if user is an Admin -->
+                <a class="nav-link dropdown-toggle" style = "color: azure;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                <div class="dropdown-menu bg-dark mr-auto" aria-labelledby="navbarDropdown">
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/login']"
+                        >User Management</a>
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                        >Advert Management</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<!-- main app container -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- credits -->
+<div class="text-center mt-4">
+    <p>
+        <a href="https://jasonwatmore.com/post/2020/04/19/angular-9-jwt-authentication-example-tutorial" target="_top">Angular 9 - JWT Authentication Example & Tutorial</a>
+    </p>
+    <p>
+        <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+    </p>
+</div>
