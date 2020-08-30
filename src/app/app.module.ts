@@ -13,26 +13,28 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';;
 import { RegisterComponent } from './register/register.component'
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ApplicationData } from './application-data';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        //InMemoryWebApiModule.forRoot(ApplicationData),
     ],
     declarations: [
         AppComponent,
         HomeComponent,
-        LoginComponent
-,
+        LoginComponent,
         RegisterComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
-        fakeBackendProvider
+        //fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })

@@ -1,30 +1,38 @@
 ﻿<div class="col-md-6 offset-md-3 mt-5">
-    <div class="alert alert-info">
-        Username: test<br />
-        Password: test
-    </div>
-    <div class="card bg-dark">
-        <h4 class="card-header">Angular 9 JWT Login Example</h4>
-        <div class="card-body">
+    <div class="card" style="border-color: #334e68; color: #334e68; background-color: #323F4B;">
+        <h4 class="card-header" style="background-color: #334e68; color: azure; text-align: center;">Login</h4>
+        <div class="card-body" style="text-align: center; padding-inline: 15%;">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
+                    <input type="text" formControlName="email" class="form-control" required 
+                    [ngClass]="{'is-invalid': (loginForm.get('email').touched || loginForm.get('email').dirty) && !loginForm.get('email').valid }"
+                     placeholder="Email"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="loginForm.get('email').errors?.required">
+                            Please enter your email address.
+                        </span>
+                        <span *ngIf="loginForm.get('email').errors?.email">
+                            Please enter a valid email address.
+                        </span>
+                    </span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
+                    <input type="password" formControlName="password" class="form-control" 
+                    required
+                    [ngClass]="{'is-invalid': (loginForm.get('password').touched || loginForm.get('password').dirty) && !loginForm.get('password').valid }" 
+                    placeholder="Password"/>
+                    <span class='invalid-feedback'>
+                        <span *ngIf="loginForm.get('password').errors?.required">
+                            Please enter a password.
+                        </span>
+                    </span>
                 </div>
-                <button [disabled]="loading" class="btn btn-primary">
+                <button [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #334e68; border-color: #334e68;">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
+                <div><button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: turquoise;' value = 'Need to Register?'
+                routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}' [routerLink]="['/register']">Need to Register?</button></div>  
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
             </form>
         </div>
