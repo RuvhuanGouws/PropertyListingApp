@@ -44,21 +44,18 @@ namespace WebApi.Controllers
     [HttpPost("authenticate")]
     public IActionResult Authenticate(AuthenticateRequest model)
     {
-      //var response = _userService.Authenticate(model);
-
-      //if (response == null)
-      //  return BadRequest(new { message = "Username or password is incorrect" });
-
-      //return Ok(response);
-
+      //var response = _userService.Authenticate(model)
       var user = _context.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
       // return null if user not found
-      if (user == null) return null;
+      if (user == null)
+            return BadRequest(new { message = "Username or password is incorrect" });
 
       // authentication successful so generate jwt token
       //var token = generateJwtToken(user);
 
       var response = new AuthenticateResponse(user, user.Email);
+      if (response == null)
+            return BadRequest(new { message = "Username or password is incorrect" });
 
       return Ok(response);
     }
@@ -115,6 +112,11 @@ namespace WebApi.Controllers
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
+      var userTemp = _context.Users.FirstOrDefault(x => x.Email == user.Email);
+
+      if (userTemp != null)
+          return BadRequest(new { message = "The email is already linked to an account." });
+
       _context.Users.Add(user);
       await _context.SaveChangesAsync();
 

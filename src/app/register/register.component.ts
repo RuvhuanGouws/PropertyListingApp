@@ -3,8 +3,9 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, first } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from '@app/_services';
 
 @Component({
     selector: 'app-register',
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private validationMessages: { [key: string]: { [key: string]: string } };
     displayMessage: { [key: string]: string } = {};
 
-    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) 
+    constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private authenticationService: AuthenticationService) 
     {
         this.validationMessages = {
             firstName: {
@@ -56,7 +57,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void 
     {
-        this.userService.getAll().subscribe({
+        this.userService.getAll().subscribe({ // Temp
             next: users => {
                 this.users = users;
                 console.log(users);
@@ -102,10 +103,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
         let password: string = this.registerForm.get('password').value.trim();
         let confirmPassword: string = this.registerForm.get('confirmPassword').value.trim();
 
-        if (!this.checkUnique(email))
-        {
-            return;
-        }
         if(!(password === confirmPassword))
         {
             this.errorMessage = 'Passwords do not match.';
@@ -122,27 +119,23 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
         this.userService.createUser(this.user).subscribe({
             next: () => {
-                alert('Account Created Successfuly! Please proceed to sign in using the details you provided.');
-                console.log(this.user);
-                console.log(this.users);
-                this.router.navigate(['/login']);
+                alert('Account Created Successfuly! Please proceed to sign in using the details you provided.');//Temp
+                console.log(this.user);//Temp
+                console.log(this.users);//Temp
+                this.authenticationService.login(this.user.email, this.user.password)
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        this.router.navigate(["/adverts"]);//Component does not yet exist, will route to home for now
+                    },
+                    err => {
+                        this.errorMessage = err;
+                    });
             },
             error: err => {
-                console.log(err)
+                this.errorMessage = err;
             }
         });        
-    }
-
-    checkUnique(email: string): boolean
-    {
-        for (let index = 0; index < this.users.length; index++) {
-            if(email === this.users[index].email)
-            {
-                this.errorMessage = 'Email already registed with an account.';
-                return false;
-            }      
-        }
-        return true;
     }
 
     setMessage(c: AbstractControl, name: string): void 
