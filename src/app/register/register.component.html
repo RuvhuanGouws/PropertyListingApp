@@ -91,6 +91,11 @@
                         {{ errorMessage }}
                     </label>       
                 </div>
+                <div class='form-group row mb-2' >
+                    <label class = 'alert alert-success' *ngIf='registerMessage' style='margin: 0 auto;'>
+                        {{ registerMessage }}
+                    </label>       
+                </div>
 
                 <div class='form-group row mb-2' >
                     <input class = 'btn btn-primary' type = 'submit' style = 'height: 40px;  width: 100px; margin: 0 auto; background-color: #334e68; border-color: #334e68;' value='Register'

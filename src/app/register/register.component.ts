@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     registerForm: FormGroup;
     subs: Subscription[] = [];
     errorMessage: string = '';
+    registerMessage: string = '';
 
     private validationMessages: { [key: string]: { [key: string]: string } };
     displayMessage: { [key: string]: string } = {};
@@ -45,12 +46,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
             password: {
                 required: 'You must enter a password',
                 minlength: 'Password must have a length of at least 8 characters',
-                pattern: 'Password must contain alphanumeric characters and special characters'
+                pattern: 'Password must contain alphanumeric characters and special characters. No spaces.'
             },
             confirmPassword: {
                 required: 'You must enter a password',
                 minlength: 'Password must have a length of at least 8 characters',
-                pattern: 'Password must contain alphanumeric characters and special characters'
+                pattern: 'Password must contain alphanumeric characters and special characters. No spaces.'
             }
         };
     }
@@ -68,11 +69,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
         });
 
         this.registerForm = this.fb.group({
-            email: ['', [Validators.email, Validators.required]],
-            firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-            lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-            password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^[a-zA-Z0-9!@#$&()\\-`.+,/\"]+$')]],//Check pattern
-            confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^[a-zA-Z0-9!@#$&()\\-`.+,/\"]+$')]]
+            email: ['', [Validators.email, Validators.required, Validators.minLength(6)]],
+            firstName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
+            lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+            password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100), Validators.pattern('^[a-zA-Z0-9!@#$&()\\-`.+,/\"]+$')]],//Check pattern
+            confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100), Validators.pattern('^[a-zA-Z0-9!@#$&()\\-`.+,/\"]+$')]]
         });
 
         const controlNames: string [] = [
@@ -90,7 +91,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
             this.subs[index] = control.valueChanges.pipe(debounceTime(750)).subscribe(
                 value => {
                     this.setMessage(control, controlNames[index]);
-                    control.setValue(control.value.trim());
                 }
             );
         }
@@ -119,14 +119,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
         this.userService.createUser(this.user).subscribe({
             next: () => {
-                alert('Account Created Successfuly! Please proceed to sign in using the details you provided.');//Temp
-                console.log(this.user);//Temp
-                console.log(this.users);//Temp
+                // alert('Account Created Successfuly!');//Temp
+                // console.log(this.user);//Temp
+                // console.log(this.users);//Temp
+                this.registerMessage = 'Registration Successful. Redirecting...';
                 this.authenticationService.login(this.user.email, this.user.password)
                 .pipe(first())
                 .subscribe(
                     data => {
-                        this.router.navigate(["/adverts"]);//Component does not yet exist, will route to home for now
+                        this.sleep(1500); 
+                        this.router.navigate(["/adverts"]);
                     },
                     err => {
                         this.errorMessage = err;
@@ -153,5 +155,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
         for (let index = 0; index < this.subs.length; index++) {
             this.subs[index].unsubscribe();    
         }
+    }
+
+    sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+        do {
+          currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
     }
 }

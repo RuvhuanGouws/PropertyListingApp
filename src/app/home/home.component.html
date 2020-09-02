@@ -1,8 +1,8 @@
 ﻿<nav class='navbar navbar-expand navbar-dark' style = 'background-color: #334e68;'>
     <div class = "container">
         <ul class='navbar-nav mr-auto ml-auto'>
-            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
-                >Search</a>
+            <li class='nav-item'>
+                    <input class='form-control' type='text' [(ngModel)]='filterTerm' placeholder="Search">
             </li>
             <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
                 >Featured Listings</a>
