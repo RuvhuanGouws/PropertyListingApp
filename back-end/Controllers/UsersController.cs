@@ -11,10 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PropertyApp.Data;
-using PropertyApp.Domain;
 using WebApi.Helpers;
 using WebApi.Models;
-using WebApi.Services;
+//using WebApi.Services;
+using PropertyApp.Domain;
+using Microsoft.Extensions.Options;
 
 namespace WebApi.Controllers
 {
@@ -27,18 +28,18 @@ namespace WebApi.Controllers
 
     private readonly AppSettings _appSettings;
 
-    public UserController(UserContext context)
+    public UserController(UserContext context, IOptions<AppSettings> appSettings)
     {
       _context = context;
-
+      _appSettings = appSettings.Value;
     }
 
     // GET: api/User
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-    {
-      return await _context.Users.ToListAsync();
-    }
+    //public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+    //{
+    //  return await _context.Users.ToListAsync();
+    //}
 
     [EnableCors]
     [HttpPost("authenticate")]
@@ -51,11 +52,9 @@ namespace WebApi.Controllers
             return BadRequest(new { message = "Username or password is incorrect" });
 
       // authentication successful so generate jwt token
-      //var token = generateJwtToken(user);
+      var token = generateJwtToken(user);
 
-      var response = new AuthenticateResponse(user, user.Email);
-      if (response == null)
-            return BadRequest(new { message = "Username or password is incorrect" });
+      var response = new AuthenticateResponse(user, token);
 
       return Ok(response);
     }

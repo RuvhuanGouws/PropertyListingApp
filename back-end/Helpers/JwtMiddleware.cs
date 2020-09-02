@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using PropertyApp.Data;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApi.Controllers;
 using WebApi.Services;
 
 namespace WebApi.Helpers
@@ -21,17 +23,17 @@ namespace WebApi.Helpers
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IUserService userService)
+        public async Task Invoke(HttpContext context, UserController userController)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
-                attachUserToContext(context, userService, token);
+                attachUserToContext(context, userController, token);
 
             await _next(context);
         }
 
-        private void attachUserToContext(HttpContext context, IUserService userService, string token)
+        private void attachUserToContext(HttpContext context, UserController userController, string token)
         {
             try
             {
@@ -51,7 +53,7 @@ namespace WebApi.Helpers
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // attach user to context on successful jwt validation
-                context.Items["User"] = userService.GetById(userId);
+                context.Items["User"] = userController.GetUser(userId);
             }
             catch
             {
