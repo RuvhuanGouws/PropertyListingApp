@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FYF1jJgpw7vFP1O0xs2nJQzt6429h0yOrO4cI1L1SZ5mDkVu+THDhvPYhVdD4mLGpzYEfapXc45kf66/gRifTA==",
+  "dgSpecHash": "vuPIM+n9iyuwJIojDGqILYpJ2HeTmSU36W8+UFo89VWJC3q0StQ4dFLu7Isdo84KlSVijFH2k8A98g+K+hausA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Data\\PropertyApp.Data.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\Mysterium\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

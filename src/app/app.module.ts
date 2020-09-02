@@ -11,8 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
-import { LoginComponent } from './login';;
-import { RegisterComponent } from './register/register.component'
+import { LoginComponent } from './authentication/login';;
+import { RegisterComponent } from './authentication/register/register.component'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ApplicationData } from './application-data';;
 import { AdvertComponent } from './advert/advert.component'

@@ -1,12 +1,9 @@
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\PropertyApp.Domain.deps.json
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\PropertyApp.Domain.dll
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\PropertyApp.Domain.pdb
-C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
-C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\Newtonsoft.Json.xml
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.AssemblyInfoInputs.cache
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.AssemblyInfo.cs
-C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.csproj.CoreCompileInputs.cache
-C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.csproj.CopyComplete
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.dll
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.pdb
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.csproj.CoreCompileInputs.cache
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.Domain.csprojAssemblyReference.cache

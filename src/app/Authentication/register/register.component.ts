@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, SelectMultipleControlValueAccessor } from '@angular/forms';
-import { User } from '../_models/user';
-import { UserService } from '../_services/user.service';
+import { User } from '../../_models/user';
+import { UserService } from '../../_services/user.service';
 import { Router } from '@angular/router';
 import { debounceTime, first } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -119,9 +119,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
         this.userService.createUser(this.user).subscribe({
             next: () => {
-                // alert('Account Created Successfuly!');//Temp
-                // console.log(this.user);//Temp
-                // console.log(this.users);//Temp
                 this.registerMessage = 'Registration Successful. Redirecting...';
                 this.authenticationService.login(this.user.email, this.user.password)
                 .pipe(first())

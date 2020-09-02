@@ -2,9 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace WebApi.Entities
 {
-    public class User
+    public class UserModel
     {
-        public User()
+        public UserModel()
         {
 
         }

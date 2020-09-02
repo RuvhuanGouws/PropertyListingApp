@@ -1,10 +1,8 @@
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\PropertyApp.Data.deps.json
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\PropertyApp.Data.dll
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\PropertyApp.Data.pdb
-C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\Newtonsoft.Json.dll
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\PropertyApp.Domain.dll
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\PropertyApp.Domain.pdb
-C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\bin\Debug\netstandard2.1\Newtonsoft.Json.xml
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\obj\Debug\netstandard2.1\PropertyApp.Data.csprojAssemblyReference.cache
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\obj\Debug\netstandard2.1\PropertyApp.Data.AssemblyInfoInputs.cache
 C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Data\obj\Debug\netstandard2.1\PropertyApp.Data.AssemblyInfo.cs

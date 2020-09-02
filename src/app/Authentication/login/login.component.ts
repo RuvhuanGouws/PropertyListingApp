@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
             email: [''],
             password: ['']
         });
+
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/adverts';
     }
 
     // convenience getter for easy access to form fields
@@ -48,7 +50,7 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate(["/adverts"]);//Component does not yet exist, will route to home for now
+                    this.router.navigate([this.returnUrl]);
                 },
                 err => {
                     this.error = err;

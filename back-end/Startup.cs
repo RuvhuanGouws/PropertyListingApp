@@ -6,13 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using PropertyApp.Data;
 using WebApi.Controllers;
 using WebApi.Helpers;
-using WebApi.Services;
+
 
 namespace WebApi
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -53,7 +52,7 @@ namespace WebApi
 
             app.UseAuthorization();
 
-            // custom jwt auth middleware
+            //custom jwt auth middleware
             //app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(x => x.MapControllers());

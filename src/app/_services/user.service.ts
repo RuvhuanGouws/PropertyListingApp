@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(private http: HttpClient) { }
-    url: string = 'api/users';
+
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/user`);
     }
