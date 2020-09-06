@@ -1,0 +1,9 @@
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\PropertyApp.ViewModels.deps.json
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\PropertyApp.ViewModels.dll
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\bin\Debug\netstandard2.0\PropertyApp.ViewModels.pdb
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.ViewModels.csprojAssemblyReference.cache
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.ViewModels.AssemblyInfoInputs.cache
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.ViewModels.AssemblyInfo.cs
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.ViewModels.dll
+C:\Users\Mysterium\OneDrive\Bitcube Final Project\Property Listing Website\PropertyApp.Domain\obj\Debug\netstandard2.0\PropertyApp.ViewModels.pdb

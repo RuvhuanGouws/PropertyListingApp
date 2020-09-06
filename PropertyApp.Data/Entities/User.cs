@@ -1,6 +1,4 @@
-using System;
-
-namespace PropertyApp.Domain
+namespace PropertyApp.Data
 {
   public class User
   {

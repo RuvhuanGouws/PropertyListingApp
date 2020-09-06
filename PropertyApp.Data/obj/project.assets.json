@@ -1987,17 +1987,17 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "PropertyApp.Domain/1.0.0": {
+      "PropertyApp.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Newtonsoft.Json": "12.0.3"
         },
         "compile": {
-          "bin/placeholder/PropertyApp.Domain.dll": {}
+          "bin/placeholder/PropertyApp.ViewModels.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PropertyApp.Domain.dll": {}
+          "bin/placeholder/PropertyApp.ViewModels.dll": {}
         }
       }
     }
@@ -6947,17 +6947,17 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "PropertyApp.Domain/1.0.0": {
+    "PropertyApp.ViewModels/1.0.0": {
       "type": "project",
-      "path": "../PropertyApp.Domain/PropertyApp.Domain.csproj",
-      "msbuildProject": "../PropertyApp.Domain/PropertyApp.Domain.csproj"
+      "path": "../PropertyApp.Domain/PropertyApp.ViewModels.csproj",
+      "msbuildProject": "../PropertyApp.Domain/PropertyApp.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.7",
       "Microsoft.Extensions.Logging.Console >= 3.1.7",
-      "PropertyApp.Domain >= 1.0.0"
+      "PropertyApp.ViewModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6993,8 +6993,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.Domain.csproj": {
-              "projectPath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.Domain.csproj"
+            "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.ViewModels.csproj"
             }
           }
         }

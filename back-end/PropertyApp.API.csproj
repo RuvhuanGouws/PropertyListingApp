@@ -15,6 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PropertyApp.Data\PropertyApp.Data.csproj" />
-    <ProjectReference Include="..\PropertyApp.Domain\PropertyApp.Domain.csproj" />
+    <ProjectReference Include="..\PropertyApp.Domain\PropertyApp.ViewModels.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
 </Project>

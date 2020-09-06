@@ -45,6 +45,7 @@ namespace WebApi
         // configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseHttpsRedirection();
             app.UseRouting();
 
             // global cors policy

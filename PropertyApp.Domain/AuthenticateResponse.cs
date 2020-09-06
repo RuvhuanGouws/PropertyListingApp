@@ -1,10 +1,10 @@
 
 
-using PropertyApp.Domain;
 
-namespace WebApi.Models
+
+namespace PropertyApp.ViewModels
 {
-    public class RegisterResponse
+    public class AuthenticateResponse
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -13,7 +13,7 @@ namespace WebApi.Models
         public string Token { get; set; }
 
 
-        public RegisterResponse(User user, string token)
+        public AuthenticateResponse(UserModel user, string token)
         {
             Id = user.Id;
             FirstName = user.FirstName;

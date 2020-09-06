@@ -227,9 +227,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.Domain.csproj",
-      "projectName": "PropertyApp.Domain",
-      "projectPath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.ViewModels.csproj",
+      "projectName": "PropertyApp.ViewModels",
+      "projectPath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.ViewModels.csproj",
       "packagesPath": "C:\\Users\\Mysterium\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\obj\\",
       "projectStyle": "PackageReference",

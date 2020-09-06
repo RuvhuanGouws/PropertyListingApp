@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Uu6d/yKPPa7p5h3ETMR8HM/9PGTczs7g5eSPhoEDHpbDN1treQaMlxDfx0lRfk0DTnHGZcpbmUxKRjYe+ZtBOg==",
+  "dgSpecHash": "azn+NKU0rafnlwRM0CdkcwJc+qy23tY6q8XPZCZBTbYNK0FTWe0lYgD8cov7YgLkPD53eoDO6f5oqIl9M3IqUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Mysterium\\OneDrive\\Bitcube Final Project\\Property Listing Website\\PropertyApp.Domain\\PropertyApp.ViewModels.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

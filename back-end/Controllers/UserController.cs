@@ -12,8 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PropertyApp.Data;
 using WebApi.Helpers;
-using WebApi.Models;
-using PropertyApp.Domain;
+using PropertyApp.ViewModels;
 using Microsoft.Extensions.Options;
 
 namespace WebApi.Controllers
@@ -45,17 +44,28 @@ namespace WebApi.Controllers
     public IActionResult Authenticate(AuthenticateRequest model)
     {
       //var response = _userService.Authenticate(model)
-      var user = _context.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+      var user = _context.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password); //hash password
       // return null if user not found
       if (user == null)
             return BadRequest(new { message = "Username or password is incorrect" });
 
-      // authentication successful so generate jwt token
-      var token = generateJwtToken(user);
+      var userModel = Map(user);
+      var token = generateJwtToken(userModel);
 
-      var response = new AuthenticateResponse(user, token);
+      var response = new AuthenticateResponse(userModel, token);
 
       return Ok(response);
+    }
+
+    private UserModel Map(User user)
+    {
+      return new UserModel
+      {
+        Id = user.Id,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
+        Email = user.Email
+      };
     }
 
     // GET: api/User/5
@@ -112,7 +122,7 @@ namespace WebApi.Controllers
     [HttpPost]
     public async Task<ActionResult<User>> PostUser(User user)
     {
-      var userTemp = _context.Users.FirstOrDefault(x => x.Email == user.Email);
+      var userTemp = _context.Users.FirstOrDefault(x => x.Email == user.Email); 
 
       if (userTemp != null)
           return BadRequest(new { message = "The email is already linked to an account." });
@@ -145,7 +155,7 @@ namespace WebApi.Controllers
       return _context.Users.Any(e => e.Id == id);
     }
 
-    private string generateJwtToken(User user)
+    private string generateJwtToken(UserModel user)
     {
       // generate token that is valid for 7 days
       var tokenHandler = new JwtSecurityTokenHandler();

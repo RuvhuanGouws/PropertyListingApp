@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PropertyApp.Domain\PropertyApp.Domain.csproj" />
+    <ProjectReference Include="..\PropertyApp.Domain\PropertyApp.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>

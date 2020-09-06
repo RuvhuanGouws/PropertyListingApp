@@ -1,6 +1,4 @@
-using System.Text.Json.Serialization;
-
-namespace WebApi.Entities
+namespace PropertyApp.ViewModels
 {
     public class UserModel
     {
@@ -13,7 +11,5 @@ namespace WebApi.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
 
-        [JsonIgnore]
-        public string Password { get; set; }
     }
 }
