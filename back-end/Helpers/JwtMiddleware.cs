@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebApi.Controllers;
-
+using PropertyApp.API;
 
 namespace WebApi.Helpers
 {
@@ -23,17 +23,17 @@ namespace WebApi.Helpers
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, UserController userController)
+        public async Task Invoke(HttpContext context, UserService userService)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
-                attachUserToContext(context, userController, token);
+                attachUserToContext(context, userService, token);
 
             await _next(context);
         }
 
-        private void attachUserToContext(HttpContext context, UserController userController, string token)
+        private void attachUserToContext(HttpContext context, UserService userService, string token)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace WebApi.Helpers
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // attach user to context on successful jwt validation
-                context.Items["User"] = userController.GetUser(userId);
+                context.Items["User"] = userService.GetById(userId);
             }
             catch
             {

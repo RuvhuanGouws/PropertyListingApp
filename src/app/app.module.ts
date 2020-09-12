@@ -16,7 +16,8 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ApplicationData } from './application-data';;
 import { AdvertComponent } from './advert/advert.component'
-
+;
+import { AdvertEditComponent } from './advert/advert-edit/advert-edit.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -31,7 +32,8 @@ import { AdvertComponent } from './advert/advert.component'
         HomeComponent,
         LoginComponent,
         RegisterComponent ,
-        AdvertComponent   ],
+        AdvertComponent ,
+        AdvertEditComponent  ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

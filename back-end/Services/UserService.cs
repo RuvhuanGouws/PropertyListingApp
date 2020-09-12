@@ -1,83 +1,113 @@
-//Just temporarily here as a reference
+using Microsoft.Extensions.Options;
+using PropertyApp.Data;
+using PropertyApp.ViewModels;
+using System.Linq;
+using WebApi.Helpers;
 
-//using Microsoft.EntityFrameworkCore;
-//using Microsoft.Extensions.Options;
-//using Microsoft.IdentityModel.Tokens;
-//using PropertyApp.Domain;
-//using System;
-//using System.Collections.Generic;
-//using System.IdentityModel.Tokens.Jwt;
-//using System.Linq;
-//using System.Security.Claims;
-//using System.Text;
 
-//using WebApi.Helpers;
-//using WebApi.Models;
 
-//namespace WebApi.Services
-//{
-//    public interface IUserService
-//    {
-//        AuthenticateResponse Authenticate(AuthenticateRequest model);
-//        IEnumerable<User> GetAll();
-//        User GetById(int id);
-//    }
 
-//    public class UserService : IUserService
-//    {
-//        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-//        private List<User> _users = new List<User>
-//        {
-//            new User { Id = 1, FirstName = "Test", LastName = "User", Email = "test", Password = "test" }
-//        };
+using Microsoft.IdentityModel.Tokens;
 
-//        private readonly AppSettings _appSettings;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 
-//        public UserService(IOptions<AppSettings> appSettings)
-//        {
-//            _appSettings = appSettings.Value;
-//        }
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-//        public AuthenticateResponse Authenticate(AuthenticateRequest model)
-//        {
-//            var user = _users.SingleOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+namespace PropertyApp.API
+{
+  public interface IUserService
+  {
+    AuthenticateResponse Authenticate(AuthenticateRequest model);
+    IEnumerable<UserModel> GetAll();
+    UserModel GetById(int id);
+    UserModel Find(User user);
+    UserModel AddUser(User user);
+   
+  }
 
-//            // return null if user not found
-//            if (user == null) return null;
+  public class UserService : IUserService
+  {
+    private readonly AppSettings _appSettings;
+    private readonly PropertyContext _userContext;
+    
+    public UserService(IOptions<AppSettings> appSettings, PropertyContext userContext)
+    {
+      _appSettings = appSettings.Value;
+      _userContext = userContext;
+    }
 
-//            // authentication successful so generate jwt token
-//            var token = generateJwtToken(user);
+    public AuthenticateResponse Authenticate(AuthenticateRequest model)
+    {
+      var user = _userContext.Users.SingleOrDefault(x => x.Email == model.Email && x.Password == model.Password);
 
-//            return new AuthenticateResponse(user, token);
-//        }
+      // return null if user not found
+      if (user == null) return null;
 
-        
+      var userModel = Map(user);
+      // authentication successful so generate jwt token
+      var token = generateJwtToken(userModel);
 
-//        public IEnumerable<User> GetAll()
-//        {
-//            return _users;
-//        }
+      return new AuthenticateResponse(userModel, token);
+    }
 
-//        public User GetById(int id)
-//        {
-//            return _users.FirstOrDefault(x => x.Id == id);
-//        }
+    private UserModel Map(User user)
+    {
+      return new UserModel
+      {
+        Id = user.Id,
+        FirstName = user.FirstName,
+        LastName = user.LastName,
+        Email = user.Email
+      };
+    }
 
-//        // helper methods
 
-//        private string generateJwtToken(User user)
-//        {
-//            // generate token that is valid for 7 days
-//            var tokenHandler = new JwtSecurityTokenHandler();
-//            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-//            var tokenDescriptor = new SecurityTokenDescriptor
-//            {
-//                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-//                Expires = DateTime.UtcNow.AddDays(7),
-//                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-//            };
-//            var token = tokenHandler.CreateToken(tokenDescriptor);
-//            return tokenHandler.WriteToken(token);
-//        }
-//    }
-//}
+    public IEnumerable<UserModel> GetAll()
+    {
+      return _userContext.Users.Select(u => Map(u));
+    }
+
+    public UserModel GetById(int id)
+    {
+      return Map(_userContext.Users.FirstOrDefault(x => x.Id == id));
+    }
+
+    public UserModel Find(User user)
+    {
+      var userTemp = _userContext.Users.FirstOrDefault(x => x.Email == user.Email);
+      if (userTemp == null)
+        return null;
+      return Map(userTemp); 
+    }
+
+    public UserModel AddUser(User user)
+    {
+      _userContext.Add(user);
+      _userContext.SaveChanges();
+      var userModel = Map(user);
+      return userModel;
+    }
+ 
+    // helper methods
+
+    private string generateJwtToken(UserModel user)
+    {
+      // generate token that is valid for 7 days
+      var tokenHandler = new JwtSecurityTokenHandler();
+      var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+      var tokenDescriptor = new SecurityTokenDescriptor
+      {
+        Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+        Expires = DateTime.UtcNow.AddDays(7),
+        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+      };
+      var token = tokenHandler.CreateToken(tokenDescriptor);
+      return tokenHandler.WriteToken(token);
+    }
+  }
+}

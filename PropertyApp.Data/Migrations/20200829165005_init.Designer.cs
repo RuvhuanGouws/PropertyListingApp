@@ -8,7 +8,7 @@ using PropertyApp.Data;
 
 namespace PropertyApp.Data.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(PropertyContext))]
     [Migration("20200829165005_init")]
     partial class init
     {

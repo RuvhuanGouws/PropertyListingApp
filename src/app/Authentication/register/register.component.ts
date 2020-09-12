@@ -58,15 +58,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void 
     {
-        this.userService.getAll().subscribe({ // Temp
-            next: users => {
-                this.users = users;
-                console.log(users);
-            },
-            error: err => {
-                console.log(err);
-            }
-        });
+        // this.userService.getAll().subscribe({ // Temp
+        //     next: users => {
+        //         this.users = users;
+        //         console.log(users);
+        //     },
+        //     error: err => {
+        //         console.log(err);
+        //     }
+        // });
 
         this.registerForm = this.fb.group({
             email: ['', [Validators.email, Validators.required, Validators.minLength(6)]],

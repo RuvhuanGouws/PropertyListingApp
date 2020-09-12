@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PropertyApp.Data;
 using WebApi.Controllers;
 using WebApi.Helpers;
-
+using PropertyApp.API;
 
 namespace WebApi
 {
@@ -31,7 +31,7 @@ namespace WebApi
             });
             services.AddControllers();
 
-            services.AddDbContext<UserContext>(opt =>
+            services.AddDbContext<PropertyContext>(opt =>
               opt.UseSqlServer(Configuration.GetConnectionString("UserConnex"))
                 .EnableSensitiveDataLogging()
             );
@@ -39,7 +39,7 @@ namespace WebApi
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // configure DI for application services
-            //services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // configure the HTTP request pipeline
