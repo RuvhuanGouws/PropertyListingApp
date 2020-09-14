@@ -10,3 +10,20 @@
         </ul>
     </div>
 </nav>
+
+<div *ngIf='adverts && adverts.length'>
+    <form style="margin-bottom: 2%;">
+        <div class="form-group row mb-2 justify-content-center" *ngFor='let advert of adverts'>
+            <div class="card bg-dark" style="border-color: #334e68; color: azure; background-color: #323F4B; width: 40rem; margin-top: 2%;">
+                <div class="card-body col-md-12">
+                    <label class="card-title col-md-11" style="font-size: 20px;">{{ advert.header }} - {{ advert.city }}, {{ advert.province }}</label>
+                    <a class="btn btn-dark"  style = 'height: 40; margin-top: -1rem; margin-left: 0.9rem;'>X</a>
+                    
+                    <p class="card-text" style = 'color: azure;'> {{ advert.details }} </p>
+                    <p class="card-text"> {{ advert.price | currency:"R":"symbol":"1.2-2"}} </p>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

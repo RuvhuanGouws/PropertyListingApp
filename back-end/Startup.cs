@@ -40,7 +40,8 @@ namespace WebApi
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-        }
+            services.AddScoped<AdvertService>();
+          }
 
         // configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

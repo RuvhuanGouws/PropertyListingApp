@@ -11,13 +11,13 @@ namespace PropertyApp.Data
 
     }
     public int Id { get; set; }
-    public string header { get; set; }
-    public string details { get; set; }
-    public string province { get; set; }
-    public string city { get; set; }
-    public decimal price { get; set; }
+    public string Header { get; set; }
+    public string Details { get; set; }
+    public string Province { get; set; }
+    public string City { get; set; }
+    public decimal Price { get; set; }
     public int UserID { get; set; }
-    public string status { get; set; }
+    public string Status { get; set; }
   }
  
 }

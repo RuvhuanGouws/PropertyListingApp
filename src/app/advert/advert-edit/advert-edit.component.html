@@ -28,7 +28,7 @@
 
             <div class="form-group row mb-2 justify-content-center">
                 <div class="col-md-6">
-                    <select class="form-control" formControlName = 'province' (onchange) ="updateCities()" >
+                    <select class="form-control" id = 'provinces' formControlName = 'province' (change) ="updateCities()" >
                         <option value="{{ province }}" *ngFor='let province of provinces'  > {{ province }} </option>
                     </select>
                 </div>

@@ -3,11 +3,13 @@ import { first } from 'rxjs/operators';
 
 import { User } from '@app/_models';
 import { UserService } from '@app/_services';
+import { AdvertService } from '@app/_services/advert.service';
+import { Advert } from '@app/_models/advert';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {
     loading = false;
-    users: User[];
+    adverts: Advert[];
     _filterTerm: string = '';
 
     get filterTerm(): string {
@@ -18,10 +20,18 @@ export class HomeComponent {
         this._filterTerm = value;
         //this.filteredAdverts = this.filterTerm ? this.filterAdverts() : this.adverts;  --------Will implement later
     }
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private advertService: AdvertService) { }
 
-    ngOnInit() {
-        
+    ngOnInit() 
+    {
+        this.advertService.getAdverts().subscribe({
+            next: advert => {
+                this.adverts = advert;
+            },
+            error: err => {
+                console.error(err);
+            }
+        });
     }
 
     // filterAdverts() : Advert[] ----------Will implement later

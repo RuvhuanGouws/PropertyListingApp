@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PropertyApp.Data;
+using PropertyApp.ViewModels;
 
 namespace PropertyApp.API.Controllers
 {
@@ -15,36 +16,29 @@ namespace PropertyApp.API.Controllers
     [ApiController]
     public class AdvertsController : ControllerBase
     {
-        private readonly PropertyContext _context; // implement service
-
-        public AdvertsController(PropertyContext context)
+        private readonly AdvertService _advertService;
+        public AdvertsController(AdvertService advertService)
         {
-            _context = context;
+            _advertService = advertService;
         }
 
         // GET: api/Adverts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Advert>>> GetAdverts()
+        public IEnumerable<Advert> GetAdverts()
         {
-            return await _context.Adverts.ToListAsync();
+            return _advertService.GetAll();
         }
 
         [HttpGet("locations")]
-        public Dictionary<string, List<string>> GetLocations() //temp - move to service
+        public Dictionary<string, List<string>> GetLocations()
         {
-          var locations = new Dictionary<string, List<string>>();
-          locations.Add("Northern Cape", new List<string>() { "Kimberley", "Upington" });
-          locations.Add("Eastern Cape", new List<string>() { "East London", "George" });
-          locations.Add("Western Cape", new List<string>() { "Cape Town", "Stellenbosch" });
-          locations.Add("Free State", new List<string>() { "Bloemfontein", "Welkom" });
-          locations.Add("Gauteng", new List<string>() { "Pretoria", "Johannesburg" });
-          return locations;
+            return _advertService.GetLocations();
         }
         // GET: api/Adverts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Advert>> GetAdvert(int id)
+        public ActionResult<Advert> GetAdvert(int id)
         {
-            var advert = await _context.Adverts.FindAsync(id);
+            var advert = _advertService.GetById(id);
 
             if (advert == null)
             {
@@ -54,69 +48,67 @@ namespace PropertyApp.API.Controllers
             return advert;
         }
 
+        [HttpGet("current/{id}")]
+        public ActionResult<IEnumerable<Advert>> GetAdvertCurrentUser(int id)
+        {
+          var advert = _advertService.GetCurrentAdverts(id);
+
+          if (advert == null)
+          {
+            return NotFound();
+          }
+
+          return advert;
+        }
+
         // PUT: api/Adverts/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut]
-        public async Task<IActionResult> PutAdvert(Advert advert)
-        {
-            //if (id != advert.Id)
-            //{
-            //    return BadRequest();
-            //}
+        //[HttpPut]
+        //    public async Task<IActionResult> PutAdvert(Advert advert)
+        //    {
+        //        //if (id != advert.Id)
+        //        //{
+        //        //    return BadRequest();
+        //        //}
 
-            _context.Entry(advert).State = EntityState.Modified;
+        //        _context.Entry(advert).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                //if (!AdvertExists(id))
-                //{
-                //    return NotFound();
-                //}
-                //else
-                //{
-                //    throw;
-                //}
-            }
+        //        try
+        //        {
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            //if (!AdvertExists(id))
+        //            //{
+        //            //    return NotFound();
+        //            //}
+        //            //else
+        //            //{
+        //            //    throw;
+        //            //}
+        //        }
 
-            return NoContent();
-        }
+        //        return NoContent();
+        //    }
 
         // POST: api/Adverts
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Advert>> PostAdvert(Advert advert)
+        public ActionResult<Advert> PostAdvert(Advert advert)
         {
-            _context.Adverts.Add(advert);
-            await _context.SaveChangesAsync();
+            _advertService.AddAdvert(advert);
 
             return CreatedAtAction("GetAdvert", new { id = advert.Id }, advert);
         }
 
         // DELETE: api/Adverts/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Advert>> DeleteAdvert(int id)
+        public ActionResult<Advert> DeleteAdvert(int id)
         {
-            var advert = await _context.Adverts.FindAsync(id);
-            if (advert == null)
-            {
-                return NotFound();
-            }
-
-            _context.Adverts.Remove(advert);
-            await _context.SaveChangesAsync();
-
-            return advert;
-        }
-
-        private bool AdvertExists(int id)
-        {
-            return _context.Adverts.Any(e => e.Id == id);
+            return _advertService.DeleteAdvert(id);
         }
     }
 }

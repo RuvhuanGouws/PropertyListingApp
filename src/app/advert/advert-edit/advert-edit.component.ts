@@ -156,7 +156,10 @@ export class AdvertEditComponent implements OnInit, OnDestroy {
             header: this.advert.header,
             details: this.advert.details,
             price: this.advert.price,
-            province: this.advert.province,
+            province: this.advert.province
+        });
+        this.updateCities();
+        this.advertEditForm.patchValue({
             city: this.advert.city
         });
     }
@@ -174,7 +177,6 @@ export class AdvertEditComponent implements OnInit, OnDestroy {
     updateCities() : void
     {
         this.cities = this.locations[this.advertEditForm.get('province').value];
-        console.log(this.cities);
     }
 
     ngOnDestroy(): void 

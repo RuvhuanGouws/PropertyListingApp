@@ -19,6 +19,11 @@ export class AdvertService
         return this.http.get<Advert[]>(`${environment.apiUrl}/adverts/`);
     }
 
+    getAdvertsCurrentUser() : Observable<Advert[]>
+    {
+        return this.http.get<Advert[]>(`${environment.apiUrl}/adverts/current/${JSON.parse(localStorage.getItem('currentUser')).id}`);
+    }
+
     getAdvert(id: number): Observable<Advert> 
     {
         if (id === 0) 

@@ -24,12 +24,9 @@ export class AdvertComponent implements OnInit {
 
     refresh() : void
     {
-        this.advertService.getAdverts().subscribe({
+        this.advertService.getAdvertsCurrentUser().subscribe({
             next: advert => {
-                this.adverts = advert;
-                this.filteredAdverts = this.adverts.filter( advert => {
-                    return (advert.userID === JSON.parse(localStorage.getItem('currentUser')).id)
-                });
+                this.filteredAdverts = advert;
             },
             error: err => {
                 console.error(err);
