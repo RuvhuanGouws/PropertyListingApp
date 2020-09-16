@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Data.SqlTypes;
 
 namespace PropertyApp.Data.Migrations
 {
@@ -16,7 +17,7 @@ namespace PropertyApp.Data.Migrations
                     details = table.Column<string>(nullable: true),
                     province = table.Column<string>(nullable: true),
                     city = table.Column<string>(nullable: true),
-                    price = table.Column<decimal>(nullable: false),
+                    price = table.Column<SqlMoney>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
                     status = table.Column<string>(nullable: true)
                 },

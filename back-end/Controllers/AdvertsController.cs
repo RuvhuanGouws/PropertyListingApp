@@ -23,8 +23,14 @@ namespace PropertyApp.API.Controllers
         }
 
         // GET: api/Adverts
+        [HttpGet("ads/{order}")]
+        public IEnumerable<Advert> GetAdverts(string order)
+        {
+            return _advertService.GetAll(order);
+        }
+
         [HttpGet]
-        public IEnumerable<Advert> GetAdverts()
+        public IEnumerable<Advert> GetAdvertsAll()
         {
             return _advertService.GetAll();
         }
@@ -61,37 +67,40 @@ namespace PropertyApp.API.Controllers
           return advert;
         }
 
-        // PUT: api/Adverts/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut]
-        //    public async Task<IActionResult> PutAdvert(Advert advert)
-        //    {
-        //        //if (id != advert.Id)
-        //        //{
-        //        //    return BadRequest();
-        //        //}
+        //PUT: api/Adverts/5
+        //     To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //     more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut]
+        public IActionResult PutAdvert(Advert advert)
+        {
+          //if (id != advert.Id)
+          //{
+          //  return BadRequest();
+          //}
 
-        //        _context.Entry(advert).State = EntityState.Modified;
+          _advertService.Update(advert);
 
-        //        try
-        //        {
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            //if (!AdvertExists(id))
-        //            //{
-        //            //    return NotFound();
-        //            //}
-        //            //else
-        //            //{
-        //            //    throw;
-        //            //}
-        //        }
+          //_context.Entry(advert).State = EntityState.Modified;
 
-        //        return NoContent();
-        //    }
+          //try
+          //{
+          //  await _context.SaveChangesAsync();
+          //}
+          //catch (DbUpdateConcurrencyException)
+          //{
+          //  if (!AdvertExists(id))
+          //  {
+          //    return NotFound();
+          //  }
+          //  else
+          //  {
+          //    throw;
+          //  }
+          //}
+
+          //return NoContent();
+          return Ok();
+        }
 
         // POST: api/Adverts
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -104,11 +113,11 @@ namespace PropertyApp.API.Controllers
             return CreatedAtAction("GetAdvert", new { id = advert.Id }, advert);
         }
 
-        // DELETE: api/Adverts/5
+            // DELETE: api/Adverts/5
         [HttpDelete("{id}")]
         public ActionResult<Advert> DeleteAdvert(int id)
         {
             return _advertService.DeleteAdvert(id);
         }
-    }
+     }
 }

@@ -14,9 +14,14 @@ export class AdvertService
     
     url: string = 'api/adverts';
 
+    getAdvertsHome(order: string) : Observable<Advert[]>
+    {
+        return this.http.get<Advert[]>(`${environment.apiUrl}/adverts/ads/${order}`);
+    }
+
     getAdverts() : Observable<Advert[]>
     {
-        return this.http.get<Advert[]>(`${environment.apiUrl}/adverts/`);
+        return this.http.get<Advert[]>(`${environment.apiUrl}/adverts`);
     }
 
     getAdvertsCurrentUser() : Observable<Advert[]>

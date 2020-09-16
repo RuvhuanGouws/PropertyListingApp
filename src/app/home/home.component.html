@@ -7,21 +7,35 @@
             <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
                 >Featured Listings</a>
             </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" style = "color: azure;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Order By
+                </a>
+                <div class="dropdown-menu bg-dark mr-auto"  aria-labelledby="navbarDropdown">
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/', order]"
+                        (click) = 'lowHigh()'>Low to High</a>
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/', order]"
+                        (click) = 'highLow()'>High to Low</a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
 
 <div *ngIf='adverts && adverts.length'>
     <form style="margin-bottom: 2%;">
-        <div class="form-group row mb-2 justify-content-center" *ngFor='let advert of adverts'>
-            <div class="card bg-dark" style="border-color: #334e68; color: azure; background-color: #323F4B; width: 40rem; margin-top: 2%;">
+        <div class="form-group row col-md-12 justify-content-center" *ngFor='let advert of adverts'>
+            <div class="tile bg-dark" style="display: inline-block; border-color: #334e68; color: azure; background-color: #323F4B; width: 40rem; margin-top: 2%;">
                 <div class="card-body col-md-12">
-                    <label class="card-title col-md-11" style="font-size: 20px;">{{ advert.header }} - {{ advert.city }}, {{ advert.province }}</label>
-                    <a class="btn btn-dark"  style = 'height: 40; margin-top: -1rem; margin-left: 0.9rem;'>X</a>
+                    <a class="card-header" style="font-size: 20px; color: #4287f5;">{{ advert.header }}</a>
+                    <p class="card-header col-md-9" style="font-size: 20px;"> {{ advert.city }}, {{ advert.province }} 
+                        <label class="card-header" style = 'height: 40; margin-top: -1rem; margin-left: 0.9rem; color: #4287f5;' >{{ advert.price | currency:"R":"symbol":"1.2-2"}}</label>
+                    </p>
+                      
                     
-                    <p class="card-text" style = 'color: azure;'> {{ advert.details }} </p>
-                    <p class="card-text"> {{ advert.price | currency:"R":"symbol":"1.2-2"}} </p>
                     
+                    <!-- <p class="card-text" style = 'color: azure;'> Seller {{ advert.userID }} </p>
+                    <p class="card-text" style = 'color: azure;'> {{ advert.details }} </p> -->
                 </div>
             </div>
         </div>

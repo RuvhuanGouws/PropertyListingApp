@@ -11,6 +11,7 @@ export class HomeComponent {
     loading = false;
     adverts: Advert[];
     _filterTerm: string = '';
+    order: string = 'default';
 
     get filterTerm(): string {
         return this._filterTerm;
@@ -24,7 +25,12 @@ export class HomeComponent {
 
     ngOnInit() 
     {
-        this.advertService.getAdverts().subscribe({
+        this.refresh();
+    }
+
+    refresh()
+    {
+        this.advertService.getAdvertsHome(this.order).subscribe({
             next: advert => {
                 this.adverts = advert;
             },
@@ -32,6 +38,19 @@ export class HomeComponent {
                 console.error(err);
             }
         });
+    }
+
+    lowHigh() : void
+    {
+        this.order = 'lowHigh';
+        this.refresh();
+        
+    }
+
+    highLow() : void
+    {
+        this.order = 'highLow';
+        this.refresh();
     }
 
     // filterAdverts() : Advert[] ----------Will implement later
