@@ -14,10 +14,12 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './authentication/login';;
 import { RegisterComponent } from './authentication/register/register.component'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ApplicationData } from './application-data';;
-import { AdvertComponent } from './advert/advert.component'
+import { ApplicationData } from './application-data';
+import { AdvertComponent } from './advert/advert.component';
 ;
-import { AdvertEditComponent } from './advert/advert-edit/advert-edit.component'
+import { AdvertEditComponent } from './advert/advert-edit/advert-edit.component';
+;
+import { AdvertDetailComponent } from './advert/advert-detail/advert-detail.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -33,7 +35,9 @@ import { AdvertEditComponent } from './advert/advert-edit/advert-edit.component'
         LoginComponent,
         RegisterComponent ,
         AdvertComponent ,
-        AdvertEditComponent  ],
+        AdvertEditComponent ,
+        AdvertDetailComponent 
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
