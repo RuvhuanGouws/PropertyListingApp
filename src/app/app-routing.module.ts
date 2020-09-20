@@ -10,6 +10,7 @@ import { AuthenticationService } from './_services';
 import { AdvertEditComponent } from './advert/advert-edit/advert-edit.component';
 import { AdvertGuard } from './advert/advert.guard';
 import { AdvertDetailComponent } from './advert/advert-detail/advert-detail.component';
+import { AccountComponent } from './account/account.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'adverts', component: AdvertComponent, canActivate: [AuthGuard] },
     { path: 'adverts/edit/:id', component: AdvertEditComponent, canActivate: [AuthGuard], canDeactivate: [AdvertGuard] },
     { path: 'adverts/detail/:id', component: AdvertDetailComponent, canActivate: [AuthGuard] },
+    { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
     
     { path: '**', redirectTo: '' }
 ];

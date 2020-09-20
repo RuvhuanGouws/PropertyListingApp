@@ -16,10 +16,12 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ApplicationData } from './application-data';
 import { AdvertComponent } from './advert/advert.component';
-;
 import { AdvertEditComponent } from './advert/advert-edit/advert-edit.component';
-;
-import { AdvertDetailComponent } from './advert/advert-detail/advert-detail.component';
+import { AdvertDetailComponent } from './advert/advert-detail/advert-detail.component';;
+import { AccountComponent } from './account/account.component';;
+import { ProfileComponent } from './account/profile/profile.component';
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -36,8 +38,10 @@ import { AdvertDetailComponent } from './advert/advert-detail/advert-detail.comp
         RegisterComponent ,
         AdvertComponent ,
         AdvertEditComponent ,
-        AdvertDetailComponent 
-    ],
+        AdvertDetailComponent ,
+        AccountComponent
+,
+        ProfileComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

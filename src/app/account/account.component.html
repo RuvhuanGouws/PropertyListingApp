@@ -1,0 +1,107 @@
+<div class = 'card bg-dark justify-content-center'  style = 'color: #4287f5; margin-top: 2%; margin-left: 20%; margin-right: 20%; margin-bottom: 2%;'>
+    <div class = 'card-header' style = 'text-align: center;'>
+        {{ pageTitle }}
+    </div>
+    <div class="form-group row mb-2 justify-content-center" *ngIf='true'>
+        <div class="card bg-dark" style="width: 40rem; border-color: #4287f5;">
+            <div class="card-body col-md-12 " >
+                <div class="card" style="border-color: #334e68; color: #334e68; background-color: #323F4B;">
+                    <h4 class="card-header" style="background-color: #334e68; color: azure; text-align: center;">Change Email</h4>
+                    <div class="card-body" style="text-align: center; padding-inline: 15%;">
+                        <form [formGroup]="emailForm" (ngSubmit)="changeEmail()">
+                            <div class="form-group">
+                                <input type="text" formControlName="email" class="form-control" required 
+                                
+                                placeholder="New Email"/>
+                                <span class='invalid-feedback'>
+                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                        Please enter your email address.
+                                    </span>
+                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                        Please enter a valid email address.
+                                    </span> -->
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" formControlName="emailConfirm" class="form-control" required 
+                                
+                                placeholder="Confirm Email"/>
+                                <span class='invalid-feedback'>
+                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                        Please enter your email address.
+                                    </span>
+                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                        Please enter a valid email address.
+                                    </span> -->
+                                </span>
+                            </div>
+                            
+                            <!-- <button [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #334e68; border-color: #334e68;">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Login
+                            </button> -->
+                            <!-- <div><button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: turquoise;' value = 'Need to Register?'
+                            routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}' [routerLink]="['/register']">Need to Register?</button></div>  
+                            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div> -->
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card" style="border-color: #334e68; color: #334e68; background-color: #323F4B;">
+                    <h4 class="card-header" style="background-color: #334e68; color: azure; text-align: center;">Change Password</h4>
+                    <div class="card-body" style="text-align: center; padding-inline: 15%;">
+                        <form [formGroup]="emailForm" (ngSubmit)="changeEmail()">
+                            <div class="form-group">
+                                <input type="text" formControlName="email" class="form-control" required 
+                                
+                                placeholder="New Email"/>
+                                <span class='invalid-feedback'>
+                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                        Please enter your email address.
+                                    </span>
+                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                        Please enter a valid email address.
+                                    </span> -->
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" formControlName="emailConfirm" class="form-control" required 
+                                
+                                placeholder="Confirm Email"/>
+                                <span class='invalid-feedback'>
+                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                        Please enter your email address.
+                                    </span>
+                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                        Please enter a valid email address.
+                                    </span> -->
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" formControlName="emailConfirm" class="form-control" required 
+                                
+                                placeholder="Confirm Email"/>
+                                <span class='invalid-feedback'>
+                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                        Please enter your email address.
+                                    </span>
+                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                        Please enter a valid email address.
+                                    </span> -->
+                                </span>
+                            </div>
+                            
+                            <!-- <button [disabled]="!loginForm.valid" class="btn btn-primary" style="background-color: #334e68; border-color: #334e68;">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Login
+                            </button> -->
+                            <!-- <div><button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: turquoise;' value = 'Need to Register?'
+                            routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}' [routerLink]="['/register']">Need to Register?</button></div>  
+                            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

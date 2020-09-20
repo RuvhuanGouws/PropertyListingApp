@@ -15,8 +15,8 @@
         <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
             >Homes for Sale</a>
         </li>
-        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
-            >Sell a House</a> <!-- Needs a guard -->
+        <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/adverts']" 
+            >Sell a House</a>
         </li>
         <li *ngIf='!currentUser' class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" style = "color: azure;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,7 +47,7 @@
             <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
                 >Buy a House</a>
             </li>
-            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/adverts']" 
                 >Sell a House</a> 
             </li>
             <li class="nav-item dropdown ">
@@ -55,7 +55,7 @@
                     My Account
                 </a>
                 <div class="dropdown-menu bg-dark mr-auto" aria-labelledby="navbarDropdown">
-                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/login']"
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/account']"
                         >Manage My Account</a>
                     <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
                         >My Seller Profile</a>

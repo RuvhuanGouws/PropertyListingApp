@@ -1,15 +1,15 @@
-<div class = 'card bg-dark justify-content-center'  style = 'color: turquoise; margin-top: 2%; margin-left: 20%; margin-right: 20%; margin-bottom: 2%;'>
+<div class = 'card bg-dark justify-content-center'  style = 'color: #4287f5; margin-top: 2%; margin-left: 20%; margin-right: 20%; margin-bottom: 2%;'>
     <div class = 'card-header' style = 'text-align: center;'>
         {{ pageTitle }}
     </div>
     <div class="form-group row mb-2 justify-content-center" *ngIf='advert'>
-        <div class="card bg-dark" style="width: 40rem; border-color: turquoise;">
+        <div class="card bg-dark" style="width: 40rem; border-color: #4287f5;">
             <div class="card-body col-md-12">
-                <label class="card-title col-md-12" style = 'font-size: 20px; text-align: center;'>{{ advert.header }}</label>                        
+                <img style="width: 100%;" src = "https://preview.redd.it/plnsmoluuph31.jpg?width=960&crop=smart&auto=webp&s=f2b61b57ff25e36f5c04d0ba33a74bcf93c68b06" width="50%" height="50%">
+                <label class="card-title col-md-12" style = 'font-size: 20px; text-align: center;'>{{ advert.header }} - {{ advert.price | currency:"R":"symbol":"1.2-2"}}</label>                        
+                <label class="card-title col-md-12" style = 'font-size: 20px; text-align: center;'>{{ advert.city }}, {{ advert.province }}</label>                        
                 <p class="card-text" style = 'color: azure;'> {{ advert.details }} </p>
-                <p class="card-text"> {{ advert.price | currency:"R":"symbol":"1.2-2"}} </p>
-                <label class="card-text col-md-6" style = 'text-align: left;'>Ad Created: {{ advert.status }}</label> 
-                <label class="card-text col-md-6" style = 'text-align: right;'>Posted By: {{ advert.userID }}</label> 
+                <label class="card-text col-md-6" style = 'text-align: left;'>Posted By: {{ advert.userID }} (Change to contact seller)</label> 
             </div>
         </div>
     </div>
