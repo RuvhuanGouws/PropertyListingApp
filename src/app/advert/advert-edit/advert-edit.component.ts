@@ -58,7 +58,6 @@ export class AdvertEditComponent implements OnInit, OnDestroy {
         this.locations = this.advertService.getLocations().subscribe(
             value => {
                 this.locations = value;
-                console.log(this.locations);
                 for (const key in this.locations) {
                     this.provinces.push(key);
                 }
@@ -105,6 +104,7 @@ export class AdvertEditComponent implements OnInit, OnDestroy {
                 userID: JSON.parse(localStorage.getItem('currentUser')).id,
                 province: this.advertEditForm.get('province').value,
                 city: this.advertEditForm.get('city').value,
+                featured: false
             };
             console.log(this.advert);
             this.advertService.createAdvert(this.advert).subscribe({

@@ -18,6 +18,7 @@ namespace PropertyApp.ViewModels
     public decimal Price { get; set; }
     public int UserID { get; set; }
     public string Status { get; set; }
+    public bool Featured { get; set; }
   }
 }
 

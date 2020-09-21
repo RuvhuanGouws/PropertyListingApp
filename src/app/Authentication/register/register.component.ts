@@ -114,7 +114,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
             'firstName': this.registerForm.get('firstName').value.trim(),
             'lastName': this.registerForm.get('lastName').value.trim(),
             'email': email,
-            'password': password
+            'password': password,
+            'admin': false
         };
 
         this.userService.createUser(this.user).subscribe({

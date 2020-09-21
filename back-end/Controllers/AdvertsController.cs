@@ -33,7 +33,7 @@ namespace PropertyApp.API.Controllers
         public IEnumerable<Advert> GetAdvertsAll()
         {
             return _advertService.GetAll();
-        }
+        } 
 
         [HttpGet("locations")]
         public Dictionary<string, List<string>> GetLocations()

@@ -57,10 +57,9 @@ export class AdvertService
         return this.http.put<Advert>(`${environment.apiUrl}/adverts`, advert, { headers });
     }
 
-    getLocations(): Observable<any>
+    getLocations(): Observable<Location>
     {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.http.get<any>(`${environment.apiUrl}/adverts/locations`, {headers});
+        return this.http.get<Location>(`${environment.apiUrl}/adverts/locations`);
     };
 
     private initializeAdvert(): Advert 
@@ -71,7 +70,8 @@ export class AdvertService
             details: '',
             price: null,
             status: '',
-            userID: null   
+            userID: null,
+            featured: false   
         };
     }
 }

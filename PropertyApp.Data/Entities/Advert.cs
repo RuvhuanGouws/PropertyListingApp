@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Text;
 
 namespace PropertyApp.Data
@@ -18,6 +19,6 @@ namespace PropertyApp.Data
     public decimal Price { get; set; }
     public int UserID { get; set; }
     public string Status { get; set; }
+    public bool Featured { get; set; }
   }
- 
 }

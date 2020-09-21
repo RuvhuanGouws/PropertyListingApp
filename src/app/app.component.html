@@ -7,7 +7,7 @@
 </nav> -->
 
 <nav class='navbar navbar-expand navbar-dark' style = 'background-color: #323F4B;'>
-    <a *ngIf = "currentUser" class='navbar-brand' routerLinkActive='active' [routerLink]="['/']">Welcome, {{ currentUser.firstName }}!</a>
+    <a *ngIf = "currentUser" class='navbar-brand' style="color: #4287f5;" routerLinkActive='active' [routerLink]="['/']">Welcome, {{ currentUser.firstName }}!</a>
     <ul class='navbar-nav ml-auto'>
         <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
             >Home</a>

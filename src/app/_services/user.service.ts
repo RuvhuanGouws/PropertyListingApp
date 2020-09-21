@@ -19,4 +19,10 @@ export class UserService {
         //user.id = null;
         return this.http.post<any>(`${environment.apiUrl}/user`, user, {headers});
     }
+
+    updateUser(user: User): Observable<User> 
+    {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.put<User>(`${environment.apiUrl}/adverts`, user, { headers });
+    }
 }

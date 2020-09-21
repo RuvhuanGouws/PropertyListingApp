@@ -8,4 +8,5 @@ export interface Advert
     price?: number;
     userID?: number;
     status?: string;
+    featured: boolean;
 }

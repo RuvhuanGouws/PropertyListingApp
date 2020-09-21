@@ -19,6 +19,7 @@ export class ApplicationData implements InMemoryDbService
                 "lastName": "Gouws",
                 "email": "ruvhuang@gmail.com",
                 "password": "Password@1234",
+                "admin": false
             },
             {
                 "id": 2,
@@ -26,6 +27,7 @@ export class ApplicationData implements InMemoryDbService
                 "lastName": "Musk",
                 "email": "elonmusk@gmail.com",
                 "password": "Password@1234",
+                "admin": false
             },
             {
                 "id": 3,
@@ -33,6 +35,7 @@ export class ApplicationData implements InMemoryDbService
                 "lastName": "Lannister",
                 "email": "tywin.lannister@gmail.com",
                 "password": "Password@1234",
+                "admin": false
             },
             {
                 "id": 4,
@@ -40,6 +43,7 @@ export class ApplicationData implements InMemoryDbService
                 "lastName": "Stormcrow",
                 "email": "whatisanemail@gmail.com",
                 "password": "Password@1234",
+                "admin": false
             },
             {
                 "id": 5,
@@ -47,6 +51,7 @@ export class ApplicationData implements InMemoryDbService
                 "lastName": "Moriarty",
                 "email": "moriarty@gmail.com",
                 "password": "Password@1234",
+                "admin": false
             }
         ]
         return { users };

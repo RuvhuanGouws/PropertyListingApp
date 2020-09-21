@@ -105,7 +105,8 @@ namespace PropertyApp.API
         City = advert.City,
         Price = advert.Price,
         UserID = advert.UserID,
-        Status = advert.Status 
+        Status = advert.Status,
+        Featured = advert.Featured
       };
     }
   }
