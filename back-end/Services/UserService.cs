@@ -17,6 +17,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace PropertyApp.API
 {
@@ -27,7 +28,10 @@ namespace PropertyApp.API
     UserModel GetById(int id);
     UserModel Find(User user);
     UserModel AddUser(User user);
-   
+
+    public ActionResult<UserModel> Update(User user);
+
+    public ActionResult<UserModel> ChangePw(PasswordChange passwordChange);
   }
 
   public class UserService : IUserService
@@ -92,7 +96,41 @@ namespace PropertyApp.API
       var userModel = Map(user);
       return userModel;
     }
- 
+
+    public ActionResult<UserModel> Update(User user)
+    {
+      var userTemp = _userContext.Users.SingleOrDefault(userP => userP.Id == user.Id);
+      if (userTemp != null)
+      {
+        _userContext.Entry(user).State = EntityState.Detached;
+        _userContext.Users.Attach(user);
+        _userContext.Entry(user).State = EntityState.Modified;
+        _userContext.SaveChanges();
+      }
+
+      return Map(user);
+    }
+
+    public ActionResult<UserModel> ChangePw(PasswordChange passwordChange)
+    {
+      var userTemp = _userContext.Users.SingleOrDefault(userP => userP.Id == passwordChange.user.Id);
+
+      if (userTemp.Password != passwordChange.pw)
+      {
+        return null;
+      }
+      userTemp.Password = passwordChange.newPw;
+      if (userTemp != null)
+      {
+        _userContext.Entry(passwordChange.user).State = EntityState.Detached;
+        _userContext.Users.Attach(passwordChange.user);
+        _userContext.Entry(passwordChange.user).State = EntityState.Modified;
+        _userContext.SaveChanges();
+      }
+
+      return Map(passwordChange.user);
+    }
+
     // helper methods
 
     private string generateJwtToken(UserModel user)

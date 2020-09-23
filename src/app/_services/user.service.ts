@@ -23,6 +23,12 @@ export class UserService {
     updateUser(user: User): Observable<User> 
     {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.http.put<User>(`${environment.apiUrl}/adverts`, user, { headers });
+        return this.http.put<User>(`${environment.apiUrl}/user`, user, { headers });
+    }
+
+    changePw(user: User, pw: string, newPw: string): Observable<User> 
+    {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.put<User>(`${environment.apiUrl}/user/pw`, {user: user, pw: pw, newPw: newPw}, { headers });
     }
 }

@@ -16,7 +16,6 @@ export class AccountComponent implements OnInit {
     passwordForm: FormGroup;
     namesForm: FormGroup;
 
-    userService: UserService;
     user: User;
     email: string;
     confirmEmail: string;
@@ -26,7 +25,7 @@ export class AccountComponent implements OnInit {
     name: string;
     surname: string;
     
-    constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService) { }
+    constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService, private userService: UserService) { }
 
     ngOnInit(): void 
     {
@@ -61,7 +60,7 @@ export class AccountComponent implements OnInit {
         this.userService.updateUser(this.user).subscribe({
             next: () => {
                 alert('User updated');
-                this.namesForm.reset();
+                this.emailForm.reset();
                 this.router.navigate(['/account']);
             },
             error: err => {
@@ -75,39 +74,41 @@ export class AccountComponent implements OnInit {
         this.password = this.passwordForm.get('password').value.trim();
         this.newPassword = this.passwordForm.get('newPassword').value.trim();
         this.newPasswordConfirm = this.passwordForm.get('newPasswordConfirm').value.trim();
-        if(!this.authService.login(this.user.email, this.password))
+        if(!(this.newPassword == this.newPasswordConfirm))
         {
-            console.log(this.authService.login(this.user.email, this.password));
-            console.log('Wrong Password');
             return;
         }
-        else
-        {
-            console.log(this.authService.login(this.user.email, this.password));
-            console.log('hit');
-        }
-        // this.userService.updateUser(this.user).subscribe({
-        //     next: () => {
-        //         alert('Advert updated successfully!');
-        //         this.namesForm.reset();
-        //         this.router.navigate(['/adverts']);
-        //     },
-        //     error: err => {
-        //         console.log(err)
-        //     }
-        // });
+        this.userService.changePw(this.user, this.password, this.newPassword).subscribe({
+            next: () => {
+                alert('Pass');
+                this.passwordForm.reset();
+                this.router.navigate(['/account']);
+            },
+            error: err => {
+                console.log(err)
+            }
+        });
     }
 
     changeNames(): void
     {
         this.name = this.namesForm.get('name').value.trim();
         this.surname = this.namesForm.get('surname').value.trim(); 
-
+        if((this.name) && !(this.name == ''))
+        {
+            this.user.firstName = this.name;
+        }
+        if((this.surname) && !(this.surname == ''))
+        {
+            this.user.lastName = this.surname;
+        }
+        console.log(this.user);
+        
         this.userService.updateUser(this.user).subscribe({
             next: () => {
-                alert('Advert updated successfully!');
+                alert('Names/Surname chaneged');
                 this.namesForm.reset();
-                this.router.navigate(['/adverts']);
+                this.router.navigate(['/account']);
             },
             error: err => {
                 console.log(err)

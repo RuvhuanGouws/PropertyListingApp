@@ -70,35 +70,24 @@ namespace WebApi.Controllers
     // PUT: api/User/5
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-    //[Authorize]
-    //[HttpPut("{id}")]
-    //public async Task<IActionResult> PutUser(int id, User user)
-    //{
-    //  if (id != user.Id)
-    //  {
-    //    return BadRequest();
-    //  }
+    [HttpPut]
+    public ActionResult<UserModel> PutUser(User user)
+    {
+      var response = _userService.Update(user);
 
-    //  _context.Entry(user).State = EntityState.Modified;
+      return Ok(response);
+    }
 
-    //  try
-    //  {
-    //    await _context.SaveChangesAsync();
-    //  }
-    //  catch (DbUpdateConcurrencyException)
-    //  {
-    //    if (!UserExists(id))
-    //    {
-    //      return NotFound();
-    //    }
-    //    else
-    //    {
-    //      throw;
-    //    }
-    //  }
+    [HttpPut("pw")]
+    public ActionResult<UserModel> ChangePw(PasswordChange passwordChange)
+    {
+      var response =_userService.ChangePw(passwordChange);
 
-    //  return NoContent();
-    //}
+      if (response == null)
+        return BadRequest(new { message = "Wrong password!" });
+
+      return Ok(response);
+    }
 
     // POST: api/User
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
