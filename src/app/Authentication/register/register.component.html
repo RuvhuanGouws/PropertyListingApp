@@ -1,38 +1,6 @@
-<!-- <div class="col-md-6 offset-md-3 mt-5">
-    <div class="alert alert-info">
-        Username: test<br />
-        Password: test
-    </div>
-    <div class="card" style="border-color: #334e68; color: #334e68; background-color: #323F4B;">
-        <h4 class="card-header" style="background-color: #334e68; color: azure;">Login</h4>
-        <div class="card-body" style="text-align: center; padding-inline: 10%;">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Email"/>
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password"/>
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
-                </div>
-                <button [disabled]="loading" class="btn btn-primary" style="background-color: #334e68; border-color: #334e68;">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-            </form>
-        </div>
-    </div>
-</div> -->
 <div class="col-md-6 offset-md-3 mt-5">
     <div class = 'card justify-content-center'  style="border-color: #334e68; color: #334e68; background-color: #323F4B;">
-        <div class = 'card-header' style="background-color: #334e68; color: azure;">
-            {{ pageTitle }}
-        </div>
+        <h4 class="card-header" style="background-color: #334e68; color: azure; text-align: center;">{{ pageTitle }}</h4>
 
         <form novalidate (submit)='register()' [formGroup]='registerForm'>
             <div class = 'card-body justify-content-center' style="text-align: center; padding-inline: 15%;">
@@ -102,8 +70,7 @@
                     [disabled]='!registerForm.valid'>            
                 </div>
                 <div class='form-group row mb-2' >
-                    
-                    <button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: turquoise;' value = 'Already have an account?'
+                    <button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: #4287f5;' value = 'Already have an account?'
                     routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}' [routerLink]="['/login']">Already have an account?</button>           
                 </div>
             </div>

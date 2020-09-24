@@ -31,13 +31,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.validationMessages = {
             firstName: {
                 required: 'You have enter your first name',
-                minlength: 'First Name has to be at least 2 characters',
-                maxlength: 'First Name cannot be longer than 30 characters'
+                minlength: 'First Name has to be at least 1 characters',
+                maxlength: 'First Name cannot be longer than 100 characters'
             },
             lastName: {
                 required: 'You have enter your first name',
-                minlength: 'Last Name has to be at least 2 characters',
-                maxlength: 'Last Name cannot be longer than 30 characters'
+                minlength: 'Last Name has to be at least 3 characters',
+                maxlength: 'Last Name cannot be longer than 100 characters'
             },
             email: {
                 required: 'Email is required',

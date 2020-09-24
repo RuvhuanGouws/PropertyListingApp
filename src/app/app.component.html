@@ -41,7 +41,7 @@
             <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/adverts']" 
                 >My Adverts</a>
             </li>
-            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
+            <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/profile']" 
                 >My Profile</a>
             </li>
             <li class='nav-item'><a class='nav-link' routerLinkActive='active' [routerLink]="['/']" 
@@ -57,9 +57,9 @@
                 <div class="dropdown-menu bg-dark mr-auto" aria-labelledby="navbarDropdown">
                     <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/account']"
                         >Manage My Account</a>
-                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/profile']"
                         >My Seller Profile</a>
-                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/register']"
+                    <a class='dropdown-item bg-dark' style = "color: azure;" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/favourites']"
                         >Favourite Houses</a>
                 </div>
             </li>
@@ -78,14 +78,7 @@
     </div>
 </nav>
 
-
-
 <!-- main app container -->
 <div class="container">
     <router-outlet></router-outlet>
-</div>
-
-<!-- credits -->
-<div class="text-center mt-4">
-    
 </div>

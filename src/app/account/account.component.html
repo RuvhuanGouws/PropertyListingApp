@@ -10,29 +10,29 @@
                     <div class="card-body" style="text-align: center; padding-inline: 15%;">
                         <form [formGroup]="emailForm" (ngSubmit)="changeEmail()">
                             <div class="form-group">
-                                <input type="text" formControlName="email" class="form-control" required 
-                                
+                                <input type="text" formControlName="email" class="form-control" required email
+                                [ngClass]="{'is-invalid': (emailForm.get('email').touched || emailForm.get('email').dirty) && !emailForm.get('email').valid }"
                                 placeholder="New Email"/>
                                 <span class='invalid-feedback'>
-                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                    <span *ngIf="emailForm.get('email').errors?.required">
                                         Please enter your email address.
                                     </span>
-                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                    <span *ngIf="emailForm.get('email').errors?.email">
                                         Please enter a valid email address.
-                                    </span> -->
+                                    </span>
                                 </span>
                             </div>
                             <div class="form-group">
-                                <input type="text" formControlName="emailConfirm" class="form-control" required 
-                                
+                                <input type="text" formControlName="emailConfirm" class="form-control" required
+                                [ngClass]="{'is-invalid': (emailForm.get('emailConfirm').touched || emailForm.get('emailConfirm').dirty) && !emailForm.get('emailConfirm').valid }"
                                 placeholder="Confirm Email"/>
                                 <span class='invalid-feedback'>
-                                    <!-- <span *ngIf="loginForm.get('email').errors?.required">
+                                    <span *ngIf="emailForm.get('emailConfirm').errors?.required">
                                         Please enter your email address.
                                     </span>
-                                    <span *ngIf="loginForm.get('email').errors?.email">
+                                    <span *ngIf="emailForm.get('emailConfirm').errors?.email">
                                         Please enter a valid email address.
-                                    </span> -->
+                                    </span>
                                 </span>
                             </div>
                             
@@ -51,7 +51,7 @@
                     <div class="card-body" style="text-align: center; padding-inline: 15%;">
                         <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
                             <div class="form-group">
-                                <input type="text" formControlName="password" class="form-control" required 
+                                <input type="password" formControlName="password" class="form-control" required 
                                 
                                 placeholder="Current Password"/>
                                 <span class='invalid-feedback'>
@@ -64,7 +64,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <input type="text" formControlName="newPassword" class="form-control" required 
+                                <input type="password" formControlName="newPassword" class="form-control" required 
                                 
                                 placeholder="New Password"/>
                                 <span class='invalid-feedback'>
@@ -77,7 +77,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <input type="text" formControlName="newPasswordConfirm" class="form-control" required 
+                                <input type="password" formControlName="newPasswordConfirm" class="form-control" required 
                                 
                                 placeholder="Confirm New Password"/>
                                 <span class='invalid-feedback'>

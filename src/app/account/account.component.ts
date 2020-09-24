@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '@app/_models';
 import { UserService, AuthenticationService } from '@app/_services';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
     emailForm: FormGroup;
     passwordForm: FormGroup;
     namesForm: FormGroup;
-
+    message: string = '';
     user: User;
     email: string;
     confirmEmail: string;
@@ -30,17 +30,17 @@ export class AccountComponent implements OnInit {
     ngOnInit(): void 
     {
         this.emailForm = this.formBuilder.group({
-            email: [''],
-            emailConfirm: ['']
+            email: ['', [Validators.email, Validators.required, Validators.minLength(6)]],
+            emailConfirm: ['', [Validators.email, Validators.required, Validators.minLength(6)]]
         });
         this.passwordForm = this.formBuilder.group({
-            password: [''],
-            newPassword: [''],
-            newPasswordConfirm: ['']
+            password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100)]],
+            newPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100)]],
+            newPasswordConfirm: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(100)]]
         });
         this.namesForm = this.formBuilder.group({
-            name: [''],
-            surname: ['']
+            name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
+            surname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]]
         });
 
         this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -80,7 +80,7 @@ export class AccountComponent implements OnInit {
         }
         this.userService.changePw(this.user, this.password, this.newPassword).subscribe({
             next: () => {
-                alert('Pass');
+                alert('Password changed.');
                 this.passwordForm.reset();
                 this.router.navigate(['/account']);
             },

@@ -66,7 +66,8 @@ namespace PropertyApp.API
         Id = user.Id,
         FirstName = user.FirstName,
         LastName = user.LastName,
-        Email = user.Email
+        Email = user.Email,
+        Cellphone = user.Cellphone
       };
     }
 
@@ -122,13 +123,13 @@ namespace PropertyApp.API
       userTemp.Password = passwordChange.newPw;
       if (userTemp != null)
       {
-        _userContext.Entry(passwordChange.user).State = EntityState.Detached;
-        _userContext.Users.Attach(passwordChange.user);
-        _userContext.Entry(passwordChange.user).State = EntityState.Modified;
+        _userContext.Entry(userTemp).State = EntityState.Detached;
+        _userContext.Users.Attach(userTemp);
+        _userContext.Entry(userTemp).State = EntityState.Modified;
         _userContext.SaveChanges();
       }
 
-      return Map(passwordChange.user);
+      return Map(userTemp);
     }
 
     // helper methods

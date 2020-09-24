@@ -31,7 +31,7 @@
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
-                <div><button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: turquoise;' value = 'Need to Register?'
+                <div><button class = 'btn btn-link' id = 'register' style = 'height: 40px;  margin: 0 auto; color: #4287f5;' value = 'Need to Register?'
                 routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}' [routerLink]="['/register']">Need to Register?</button></div>  
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
             </form>

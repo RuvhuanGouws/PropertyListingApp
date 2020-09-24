@@ -3,7 +3,8 @@
     firstName: string;
     lastName: string;
     email: string;
+    cellphone?: string;
     password: string;
     token?: string;
-    admin: boolean;
+    admin?: boolean;
 }
