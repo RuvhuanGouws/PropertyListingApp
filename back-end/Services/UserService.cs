@@ -103,7 +103,8 @@ namespace PropertyApp.API
       var userTemp = _userContext.Users.SingleOrDefault(userP => userP.Id == user.Id);
       if (userTemp != null)
       {
-        _userContext.Entry(user).State = EntityState.Detached;
+        user.Password = userTemp.Password;
+        _userContext.Entry(userTemp).State = EntityState.Detached;
         _userContext.Users.Attach(user);
         _userContext.Entry(user).State = EntityState.Modified;
         _userContext.SaveChanges();

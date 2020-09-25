@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
     pageTitle: string = "My Seller Profile";
     profileForm: FormGroup;
 
-    message: string = '';
+    message: string = "";
     user: User;
     email: string;
     cellphone: string;
@@ -23,25 +23,41 @@ export class ProfileComponent implements OnInit {
     {
         this.profileForm = this.formBuilder.group({
             email: ['', [Validators.email, Validators.required, Validators.minLength(6)]],
-            cellphone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+            cellphone: ['', [Validators.minLength(10), Validators.maxLength(10)]]
         });
 
         this.user = JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.user);
+        this.displayAdvert(this.user);
+    }
+
+    displayAdvert(userP: User): void 
+    {
+        if (this.profileForm) 
+        {
+          this.profileForm.reset();
+        }
+        if (!userP.cellphone) 
+        {
+            userP.cellphone = '';
+        }
+    
+        this.profileForm.patchValue({
+            email: userP.email,
+            cellphone: userP.cellphone
+        });
     }
 
     submit(): void
     {
         this.email = this.profileForm.get('email').value.trim();
-        this.cellphone = this.profileForm.get('emailConfirm').value.trim();
+        this.cellphone = this.profileForm.get('cellphone').value.trim();
         
         this.user.email = this.email;
-        this.user.cellphone = this.email;
+        this.user.cellphone = this.cellphone;
         this.userService.updateUser(this.user).subscribe({
             next: () => {
-                alert('User updated');
-                this.profileForm.reset();
-                this.router.navigate(['/account']);
+                localStorage.setItem('currentUser', JSON.stringify(this.user));
+                this.message = "Contact Details Updated!";
             },
             error: err => {
                 console.log(err)

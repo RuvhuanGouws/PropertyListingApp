@@ -10,6 +10,7 @@ import { AdvertGuard } from './advert/advert.guard';
 import { AdvertDetailComponent } from './advert/advert-detail/advert-detail.component';
 import { AccountComponent } from './account/account.component';
 import { ProfileComponent } from './account/profile/profile.component';
+import { ProfileGuard } from './account/profile/profile.guard';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
     { path: 'adverts/edit/:id', component: AdvertEditComponent, canActivate: [AuthGuard], canDeactivate: [AdvertGuard] },
     { path: 'adverts/detail/:id', component: AdvertDetailComponent, canActivate: [AuthGuard] },
     { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], canDeactivate: [ProfileGuard] },
     { path: '**', redirectTo: '' }
 ];
 

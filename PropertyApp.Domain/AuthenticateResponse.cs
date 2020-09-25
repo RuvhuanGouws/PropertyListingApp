@@ -10,6 +10,7 @@ namespace PropertyApp.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string Cellphone { get; set; }
         public string Token { get; set; }
 
 
@@ -19,6 +20,7 @@ namespace PropertyApp.ViewModels
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
+            Cellphone = user.Cellphone;
             Token = token;
         }
     }
